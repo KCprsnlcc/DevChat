@@ -20,7 +20,7 @@ vercel whoami &> /dev/null || {
 
 # Ask for Railway backend URL
 echo -e "\n===== RAILWAY BACKEND CONFIGURATION ====="
-read -p "Enter your Railway backend URL (e.g., https://your-app-name.up.railway.app): " RAILWAY_URL
+read -p "Enter your Railway backend URL (e.g., https://chat-app-production-5549.up.railway.app): " RAILWAY_URL
 
 if [ -z "$RAILWAY_URL" ]; then
     echo "Error: Railway URL is required. Please run the script again and provide a valid URL."
