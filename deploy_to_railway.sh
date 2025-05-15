@@ -14,6 +14,12 @@ railway login
 echo "Creating a new Railway project..."
 railway init
 
+echo "Adding PostgreSQL service..."
+railway add --plugin postgresql
+
+echo "Adding Redis service..."
+railway add --plugin redis
+
 echo "Adding environment variables..."
 railway variables set SECRET_KEY="$(python -c 'import secrets; print(secrets.token_hex(32))')"
 railway variables set DEBUG=False
