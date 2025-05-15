@@ -142,9 +142,9 @@ CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOWED_ORIGINS = [
     # Your Railway domain
     "https://chat-app-production-5549.up.railway.app",
-    "https://dev-chat-kappa.vercel.app/",
-    # Add your Vercel domain here when deployed
-    # Example: "https://your-app.vercel.app"
+    "https://dev-chat-kappa.vercel.app",
+    # Local development
+    "http://localhost:3000",
 ]
 CORS_ALLOW_CREDENTIALS = True
 

@@ -1,7 +1,10 @@
 import axios from 'axios';
 
-// Use environment variable with fallback to localhost for development
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:8000' ||  'http://chat-app-production-5549.up.railway.app' || 'http://dev-chat-kappa.vercel.app/';
+// Determine the API URL based on environment
+const API_URL = process.env.REACT_APP_API_URL || 
+                (window.location.hostname === 'localhost' 
+                  ? 'http://localhost:8000'
+                  : 'https://chat-app-production-5549.up.railway.app');
 
 // Create axios instance with base URL
 const api = axios.create({
