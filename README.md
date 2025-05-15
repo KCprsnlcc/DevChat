@@ -89,7 +89,3 @@ DevChat's design is heavily inspired by GitHub's dark theme interface. The color
 ## License
 
 This project is licensed under the terms outlined in the [License](LICENSE.md).
-
-## Credits
-
-Developed by [KCprsnlcc](https://github.com/KCprsnlcc) with AI assistance.
