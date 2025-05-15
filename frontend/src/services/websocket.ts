@@ -1,5 +1,8 @@
 import { WebSocketMessage } from '../types';
 
+// Use environment variable with fallback to localhost for development
+const WS_URL = process.env.REACT_APP_WS_URL || 'ws://localhost:8000';
+
 export class WebSocketService {
   private socket: WebSocket | null = null;
   private messageCallbacks: ((message: WebSocketMessage) => void)[] = [];
@@ -7,7 +10,7 @@ export class WebSocketService {
   connect(roomName: string, username: string): Promise<void> {
     return new Promise((resolve, reject) => {
       try {
-        this.socket = new WebSocket(`ws://localhost:8000/ws/chat/${roomName}/`);
+        this.socket = new WebSocket(`${WS_URL}/ws/chat/${roomName}/`);
 
         this.socket.onopen = () => {
           console.log('WebSocket connection established');
