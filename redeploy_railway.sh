@@ -14,25 +14,17 @@ railway login --browserless
 echo "Linking to existing project..."
 railway link
 
-echo "Ensuring PostgreSQL and Redis variables are set correctly..."
-# Get the existing variables
-POSTGRES_URL=$(railway variables get DATABASE_URL 2>/dev/null || echo "")
-REDIS_URL=$(railway variables get REDIS_URL 2>/dev/null || echo "")
+echo "Creating a new service for the app..."
+railway add --service chat-app
 
-# Set variables if they exist
-if [ ! -z "$POSTGRES_URL" ]; then
-    echo "Setting DATABASE_URL..."
-    railway variables set DATABASE_URL=$POSTGRES_URL
-fi
+echo "Adding PostgreSQL database..."
+railway add --database postgres || echo "PostgreSQL already exists or couldn't be added"
 
-if [ ! -z "$REDIS_URL" ]; then
-    echo "Setting REDIS_URL..."
-    railway variables set REDIS_URL=$REDIS_URL
-fi
+echo "Adding Redis database..."
+railway add --database redis || echo "Redis already exists or couldn't be added"
 
-# Set other necessary variables
-echo "Setting other necessary variables..."
-railway variables set DEBUG=False DJANGO_SETTINGS_MODULE=chat_project.settings
+echo "Setting environment variables..."
+railway variables --set DEBUG=False --set DJANGO_SETTINGS_MODULE=chat_project.settings
 
 echo "Deploying to Railway..."
 railway up
