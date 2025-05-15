@@ -1,7 +1,7 @@
 import { WebSocketMessage } from '../types';
 
 // Use environment variable with fallback to localhost for development
-const WS_URL = process.env.REACT_APP_WS_URL || 'ws://localhost:8000';
+const WS_URL = process.env.REACT_APP_WS_URL || 'ws://localhost:8000' ||  'wss://chat-app-production-5549.up.railway.app' || 'wss://dev-chat-kappa.vercel.app/';
 
 export class WebSocketService {
   private socket: WebSocket | null = null;
