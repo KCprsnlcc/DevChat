@@ -137,7 +137,15 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # CORS settings
-CORS_ALLOW_ALL_ORIGINS = True  # For development only, restrict in production
+CORS_ALLOW_ALL_ORIGINS = True
+# Also explicitly list Vercel domains for better security
+CORS_ALLOWED_ORIGINS = [
+    # Your Railway domain
+    "https://chat-app-production-5549.up.railway.app",
+    # Add your Vercel domain here when deployed
+    # Example: "https://your-app.vercel.app"
+]
+CORS_ALLOW_CREDENTIALS = True
 
 # Channel layers for WebSockets
 CHANNEL_LAYERS = {
