@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { roomService, authService } from '../services/api';
 import { Room, User } from '../types';
+import Loader from './Loader';
 import {
   Sidebar,
   RoomList as StyledRoomList,
@@ -84,7 +85,16 @@ const RoomList: React.FC<RoomListProps> = ({ currentUser }) => {
     navigate('/login');
   };
 
-  if (loading) return <div>Loading rooms...</div>;
+  if (loading) {
+    return (
+      <Sidebar>
+        <div style={{ height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <Loader />
+        </div>
+      </Sidebar>
+    );
+  }
+  
   if (error) return <div>{error}</div>;
 
   return (

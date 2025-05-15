@@ -12,6 +12,16 @@ A real-time chat application inspired by GitHub's design and user experience. De
 - **User authentication**: Secure login and registration system
 - **Responsive design**: Works on desktop and mobile devices
 
+## Future Features
+
+- **Message Threading**: Support for threaded conversations and replies
+- **Code Snippets**: Markdown and syntax highlighting for sharing code
+- **File Sharing**: Ability to upload and share files in chat
+- **User Profiles**: Customizable profiles with avatars and status indicators
+- **Notifications**: Push notifications for mentions and messages
+- **Search Functionality**: Ability to search through message history
+- **End-to-End Encryption**: Enhanced security for private conversations
+
 ## Technology Stack
 
 - **Frontend**: React, TypeScript, Styled Components
@@ -78,4 +88,8 @@ DevChat's design is heavily inspired by GitHub's dark theme interface. The color
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details. 
+This project is licensed under the terms outlined in the [License](LICENSE.md).
+
+## Credits
+
+Developed by [KCprsnlcc](https://github.com/KCprsnlcc) with AI assistance.
