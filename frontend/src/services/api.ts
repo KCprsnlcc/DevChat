@@ -6,6 +6,8 @@ const API_URL = process.env.REACT_APP_API_URL ||
                   ? 'http://localhost:8000'
                   : 'https://chat-app-production-5549.up.railway.app');
 
+console.log('Using API URL:', API_URL);
+
 // Create axios instance with base URL
 const api = axios.create({
   baseURL: API_URL,
