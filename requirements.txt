@@ -1,0 +1,8 @@
+django==4.2.21
+djangorestframework==3.16.0
+django-cors-headers==4.7.0
+channels==4.2.2
+channels-redis==4.2.1
+mysqlclient==2.2.7
+redis==6.1.0
+daphne==4.1.0 
