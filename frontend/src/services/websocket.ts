@@ -3,8 +3,8 @@ import { WebSocketMessage } from '../types';
 // Determine WebSocket URL based on environment
 const WS_URL = process.env.REACT_APP_WS_URL || 
               (window.location.hostname === 'localhost' 
-                ? 'ws://localhost:8000'
-                : 'wss://chat-app-production-5549.up.railway.app');
+                ? 'localhost:8000'
+                : 'https://chat-app-production-5549.up.railway.app');
 
 console.log('Using WebSocket URL:', WS_URL);
 
