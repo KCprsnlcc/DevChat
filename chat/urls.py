@@ -9,7 +9,8 @@ router.register(r'users', views.UserViewSet)
 router.register(r'profiles', views.UserProfileViewSet, basename='profile')
 
 urlpatterns = [
-    path('api/', include(router.urls)),
-    path('api/room/<int:room_id>/messages/', views.room_messages, name='room_messages'),
-    path('api/current-user/', views.CurrentUserView.as_view(), name='current_user'),
+    path('', include(router.urls)),
+    path('room/<int:room_id>/messages/', views.room_messages, name='room_messages'),
+    path('current-user/', views.CurrentUserView.as_view(), name='current_user'),
+    path('register/', views.RegisterView.as_view(), name='register'),
 ] 

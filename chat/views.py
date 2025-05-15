@@ -45,13 +45,9 @@ class UserProfileViewSet(viewsets.ModelViewSet):
 @api_view(['GET'])
 @permission_classes([permissions.IsAuthenticated])
 def room_messages(request, room_id):
-    try:
-        room = Room.objects.get(id=room_id)
-        messages = Message.objects.filter(room=room)
-        serializer = MessageSerializer(messages, many=True)
-        return Response(serializer.data)
-    except Room.DoesNotExist:
-        return Response({"error": "Room not found"}, status=status.HTTP_404_NOT_FOUND)
+    messages = Message.objects.filter(room_id=room_id).order_by('-timestamp')[:50]
+    serializer = MessageSerializer(messages, many=True)
+    return Response(serializer.data)
 
 class CurrentUserView(APIView):
     permission_classes = [permissions.IsAuthenticated]
@@ -59,3 +55,22 @@ class CurrentUserView(APIView):
     def get(self, request):
         serializer = UserSerializer(request.user)
         return Response(serializer.data)
+
+class RegisterView(APIView):
+    permission_classes = [permissions.AllowAny]
+    
+    def post(self, request):
+        username = request.data.get('username')
+        password = request.data.get('password')
+        
+        if not username or not password:
+            return Response({'error': 'Username and password are required'}, status=status.HTTP_400_BAD_REQUEST)
+            
+        if User.objects.filter(username=username).exists():
+            return Response({'username': ['User with this username already exists']}, status=status.HTTP_400_BAD_REQUEST)
+            
+        user = User.objects.create_user(username=username, password=password)
+        # Create a user profile
+        UserProfile.objects.create(user=user)
+        
+        return Response({'success': 'User registered successfully'}, status=status.HTTP_201_CREATED)
